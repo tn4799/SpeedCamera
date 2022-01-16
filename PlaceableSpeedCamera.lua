@@ -26,12 +26,18 @@ function PlaceableSpeedCamera:onLoad(savegame)
 	end
 
     addTrigger(spec.trigger, "onSpeedCameraTriggerCallback", self)
+    spec.flashLight = self.xmlFile:getValue(key .. "#flashLightNode", nil, self.components, self.i3dMappings)
     spec.speedLimit = self.xmlFile:getInt(key .. ".speedLimit", 50)
     -- free limit
     spec.speedLimit =  spec.speedLimit + math.min(5, spec.speedLimit * 0.1)
     spec.costPerKMH = self.xmlFile:getInt(key .. ".costPerKMH", 50)
     spec.count = 0
     spec.timer = 0
+    spec.flashed = false
+
+    if spec.flashLight ~= nil then
+        setVisibility(spec.flashLight, false)
+    end
 end
 
 function PlaceableSpeedCamera:onDelete()
@@ -45,19 +51,25 @@ function PlaceableSpeedCamera:onDelete()
 end
 
 function PlaceableSpeedCamera:onUpdate(dt)
-    
-end
+    local spec = self.spec_speedCamera
 
-function PlaceableSpeedCamera:onUpdateTick(dt)
-    if g_i18n.useMiles then
-    else
-        self:transformSpeedLimit()
+    if spec.flashed then
+        spec.timer = spec.timer + dt
+    end
+
+    if spec.timer > 100 then
+        spec.flashed = false
+
+        if spec.flashLightNode ~= nil then
+            --TODO: set flashlight visible = false
+            setVisibility(spec.flashLightNode, false)
+        end
     end
 end
 
 function PlaceableSpeedCamera:calculateCost(spec, speed)
     local cost = 0
-    speed = speed - spec.speedLimit
+    speed = speed - g_i18n.getSpeed(spec.speedLimit)
 
     if(speed > 20) then
         cost=(speed*4-40)*spec.costPerKMH
@@ -78,9 +90,15 @@ function PlaceableSpeedCamera:onSpeedCameraTriggerCallback(triggerId, otherId, o
                 spec.count = spec.count + 1
                 local vehicleSpeed = math.round(vehicle:getLastSpeed())
 
-                if vehicleSpeed > spec.speedLimit and spec.count == 1 then
+                if vehicleSpeed > g_i18n.getSpeed(spec.speedLimit) and spec.count == 1 then
+                    spec.flashed = true
                     local money = g_i18n:getCurrency(self.calculateCost(spec, vehicleSpeed))
                     local notificationText = g_i18n:getText("SPEED_CAMERA_NOTIFICATION")
+                    
+                    if spec.flashLightNode ~= nil then
+                        --TODO: set flashlight visible = true
+                        setVisibility(spec.flashLightNode, true)
+                    end
 
                     g_currentMission:addIngameNotification(FSBaseMission.INGAME_NOTIFICATION_CRITICAL, notificationText:format(-money, g_i18n:getCurrencySymbol(true)))
                     if g_currentMission:getIsServer() then
