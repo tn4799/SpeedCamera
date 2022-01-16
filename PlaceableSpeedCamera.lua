@@ -12,6 +12,7 @@ end
 function PlaceableSpeedCamera.registerEventListeners(placeableType)
     SpecializationUtil.registerEventListener(placeableType, "onLoad", PlaceableSpeedCamera.onLoad)
     SpecializationUtil.registerEventListener(placeableType, "onDelete", PlaceableSpeedCamera.onDelete)
+    SpecializationUtil.registerEventListener(placeableType, "onUpdate", PlaceableSpeedCamera.onUpdate)
 end
 
 function PlaceableSpeedCamera:onLoad(savegame)
