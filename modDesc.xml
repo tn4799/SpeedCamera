@@ -38,11 +38,11 @@ Blinking Warning Übersetzung Eingefügt damit andere Blitzer die Übersetzung h
 Option hinzugefügt damit der Besitzer des Blitzers die Strafzahlung bekommt abzüglich einer Transaktionsgebühr.
 ]]></de>
     </description>
-    
+
 	<iconFilename>icon.dds</iconFilename>
-	
+
     <multiplayer supported="true"/>
-	
+
     <extraSourceFiles>
         <sourceFile filename="SC_PayFineEvent.lua"/>
     </extraSourceFiles>
@@ -50,13 +50,13 @@ Option hinzugefügt damit der Besitzer des Blitzers die Strafzahlung bekommt abz
 	<placeableSpecializations>
 		<specialization name="placeableSpeedCamera" className="PlaceableSpeedCamera" filename="PlaceableSpeedCamera.lua"/>
 	</placeableSpecializations>
-	
+
 	<placeableTypes>
 		<type name="speedCamera" parent="simplePlaceable" filename="$dataS/scripts/placeables/Placeable.lua">
 			<specialization name="placeableSpeedCamera" />
 		</type>
 	</placeableTypes>
-	
+
 	<storeItems>
 		<storeItem xmlFilename="speedCamera.xml"/>
 	</storeItems>
@@ -85,5 +85,31 @@ Option hinzugefügt damit der Besitzer des Blitzers die Strafzahlung bekommt abz
             <en>You driven %d mph to fast</en>
             <de>Du bist %d km/h zu schnell gefahren</de>
         </text>
+
+		<!--Translations for placement dialog-->
+		<text name="dialog_speedCamera_title">
+			<en>Speed Camera Configuration</en>
+			<de>Blitzereinstellungen</de>
+		</text>
+
+		<text name="dialog_speedLimit_text">
+			<en>Speed Limit</en>
+			<de>Tempolimit</de>
+		</text>
+
+		<text name="dialog_ownerGetsMoney_text">
+			<en>Owner receives Money</en>
+			<de>Besitzer bekommt Geld</de>
+		</text>
+
+		<text name="dialog_error_invalidSpeedLimit">
+			<en>The speed limit has to be greater than 0.</en>
+			<de>Das Tempolimit muss größer als 0 sein.</de>
+		</text>
+
+		<text name="dialog_error_notANumber">
+			<en>The speed limit has to be a Number greater than 0.</en>
+			<de>Das Tempolimit muss eine Zahl größer als 0 sein.</de>
+		</text>
 	</l10n>
 </modDesc>
