@@ -44,11 +44,12 @@ Option hinzugefügt damit der Besitzer des Blitzers die Strafzahlung bekommt abz
     <multiplayer supported="true"/>
 
     <extraSourceFiles>
-        <sourceFile filename="SC_PayFineEvent.lua"/>
+        <sourceFile filename="src/SC_PayFineEvent.lua"/>
+		<sourceFile filename="src/registerDialog.lua"/>
     </extraSourceFiles>
 
 	<placeableSpecializations>
-		<specialization name="placeableSpeedCamera" className="PlaceableSpeedCamera" filename="PlaceableSpeedCamera.lua"/>
+		<specialization name="placeableSpeedCamera" className="PlaceableSpeedCamera" filename="src/PlaceableSpeedCamera.lua"/>
 	</placeableSpecializations>
 
 	<placeableTypes>
