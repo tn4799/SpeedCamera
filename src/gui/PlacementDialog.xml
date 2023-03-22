@@ -1,0 +1,31 @@
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+    <GuiElement type="empty" profile="newLayer" />
+    <GuiElement type="bitmap" profile="dialogFullscreenBg" />
+    <GuiElement type="bitmap" profile="bgVignette"/>
+    <GuiElement type="bitmap" profile="bgGlowDialog" />
+
+    <GuiElement type="bitmap" profile="speedCameraConfigurationDialog" id="dialog">
+        <GuiElement type="text" profile="dialogTextPassword" text="$l10n_dialog_speedCamera_title" id="dialogTitle" position="0px -20px"/>
+
+        <GuiElement type="text" profile="dialogTextSpeedCamera" text="$l10n_dialog_speedLimit_text" position="3px 19px"/>
+        <GuiElement type="textInput" profile="dialogSpeedLimitTextInput" position="0px 28px" text="50" id="speedLimitInput" onEnterPressed="onSpeedLimitEnterPressed" onEscPressed="onEscPressed" onFocus="onInputFocus" onLeave="onInputLeave" imeKeyboardType="normal" imeTitle="" imeDescription="" imePlaceholder="" enterWhenClickOutside="false" />
+        <!--GuiElement type="text" profile="CmDialogText" text="$l10n_CM_dialog_addPoints_reasonText" position="3px -35px"/>
+        <GuiElement type="textInput" profile="CmDialogTextInput" id="reasonInput" position="0px -28px" onEnterPressed="onReasonEnterPressed" onEscPressed="onEscPressed" onFocus="onInputFocus" onLeave="onInputLeave" imeKeyboardType="normal" imeTitle="" imeDescription="" imePlaceholder="" enterWhenClickOutside="false" /-->
+
+        <GuiElement type="boxLayout" id="checkboxesBox" profile="checkboxesBoxProfile">
+            <!-- Checkbox: owner gets money-->
+            <GuiElement type="empty" profile="ingameMenuMPActionsListItem" id="checkboxesRow[1]">
+                <GuiElement type="button" profile="ingameMenuMPActionsListPermission" text="$l10n_dialog_ownerGetsMoney_text" />
+                <GuiElement type="toggleButton" profile="ingameMenuMPActionsListPermissionCheckbox"  onClick="onClickGetMoney" id="ownerGetsMoneyCheckbox">
+                    <GuiElement type="button" profile="ingameMenuMPActionsListPermissionCheckboxTick"/>
+                    <GuiElement type="button" profile="ingameMenuMPActionsListPermissionCheckboxUntick"/>
+                </GuiElement>
+            </GuiElement>
+        </GuiElement>
+
+        <GuiElement type="flowLayout" profile="buttonBoxDialog" id="buttonsPC" >
+            <GuiElement type="button" profile="buttonBack"  text="$l10n_button_cancel"  onClick="onClickBack" id="noButton" />
+            <GuiElement type="button" profile="buttonOK"    text="$l10n_button_save"    onClick="onClickSave" id="saveButton" />
+        </GuiElement>
+    </GuiElement>
+</GUI>

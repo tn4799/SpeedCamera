@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GUIProfiles>
+    <Profile name="speedCameraConfigurationDialog" extends="dialogBg">
+        <Value name="size" value="490px 600px"/>
+    </Profile>
+
+    <Profile name="checkboxesBoxProfile" extends="emptyPanel" with="anchorTopRight">
+        <Value name="size" value="410px 410px" />
+    </Profile>
+
+    <Profile name="dialogTextSpeedCamera" extends="dialogText" with="anchorMiddleLeft">
+		<Value name="size" value="60px 40px"/>
+    </Profile>
+
+    <Profile name="dialogSpeedLimitTextInput" extends="CmDialogTextInput" with="anchorMiddleCenter">
+        <Value name="textSize" value="18px"/>
+		<Value name="maxCharacters" value="3"/>
+    </Profile>
+</GUIProfiles>
