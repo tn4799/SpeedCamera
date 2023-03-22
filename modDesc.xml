@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="68">
+    <author>tn4799, RickBlackLabele</author>
+    <version>1.1.0.0</version>
+    <title>
+        <en>Speed Camera</en>
+        <de>Blitzer</de>
+    </title>
+    <description>
+        <en>
+<![CDATA[A speed camera that triggers at about 50km/h.
+There is a small tolerance range for speed measurement to prevent measurement inaccuracies.
+If you drive too fast while passing the speed camera you will be flashed and have to pay a fine.
+The speed camera works in both directions.
+One speed camera initally costs 150000$. After that the daily upkeep is 1000$.
+
+For the future it is still planned that you can set the speed limit when placing.
+
+Changelog:
+v1.1.0.0
+Fixed a bug with loading values from the placeables.xml.
+Added blinking warning translation so other speed cameras can use the translation if they have enabled this feature.
+Added an option so that the owner of the speed camera gains the money of the fine minus a little transaction fee.
+]]></en>
+        <de>
+<![CDATA[Ein Blitzer, der bei ca. 50km/h auslöst.
+Es gibt einen kleinen Toleranzbereich bei der Geschwindigkeitsmessung um Messungenauigkeiten vorzubeugen.
+Wenn man zu schnell ist, während man am Blitzer vorbeifährt, wird man geblitzt und es wird eine Geldstrafe erhoben.
+Der Blitzer funktioniert in beide Fahrtrichtungen.
+Ein Blitzer kostet 150000€ in der Anschaffung und anschließend 1000€/Tag Unterhaltskosten.
+
+Für die Zukunft ist noch geplant, dass man das Geschwindigkeitslimit beim Platzieren einstellen kann.
+
+Changelog:
+v1.1.0.0
+Bug beim Laden der Werte aus der Placeables.xml gefixt.
+Blinking Warning Übersetzung Eingefügt damit andere Blitzer die Übersetzung haben sollten Sie diese die Option nutzen.
+Option hinzugefügt damit der Besitzer des Blitzers die Strafzahlung bekommt abzüglich einer Transaktionsgebühr.
+]]></de>
+    </description>
+    
+	<iconFilename>icon.dds</iconFilename>
+	
+    <multiplayer supported="true"/>
+	
+    <extraSourceFiles>
+        <sourceFile filename="SC_PayFineEvent.lua"/>
+    </extraSourceFiles>
+
+	<placeableSpecializations>
+		<specialization name="placeableSpeedCamera" className="PlaceableSpeedCamera" filename="PlaceableSpeedCamera.lua"/>
+	</placeableSpecializations>
+	
+	<placeableTypes>
+		<type name="speedCamera" parent="simplePlaceable" filename="$dataS/scripts/placeables/Placeable.lua">
+			<specialization name="placeableSpeedCamera" />
+		</type>
+	</placeableTypes>
+	
+	<storeItems>
+		<storeItem xmlFilename="speedCamera.xml"/>
+	</storeItems>
+
+    <l10n>
+		<text name="storeItem_speedCamera">
+			<en>Speed Camera 50km/</en>
+			<de>Blitzer 50km/h</de>
+		</text>
+		<text name="function_speedCamera">
+			<en>If you drive too fast past the speed camera, you will be flashed and have to pay a fine.</en>
+			<de>Wenn man zu schnell am Blitzer vorbeifährt wird man geblitzt und muss eine Geldstrafe bezahlen.</de>
+		</text>
+		<text name="Notification_speedCamera">
+			<!-- Info:
+				%d is used for the amount of money that has to be paid  filename="$dataS/scripts/placeables/Placeable.lua"
+				%s is used to add the currency symbol to the text
+
+				Of course a own text is possible but please use %d and %s in your text
+			-->
+			<en>%d%s for driving to fast</en>
+			<de>%d%s für zu schnelles Fahren</de>
+		</text>
+		<!-- only needed if you want a blinking warning.-->
+		<text name="warning_speedCamera">
+            <en>You driven %d mph to fast</en>
+            <de>Du bist %d km/h zu schnell gefahren</de>
+        </text>
+	</l10n>
+</modDesc>
