@@ -10,6 +10,7 @@ function PlaceableSpeedCamera.registerFunctions(placeableType)
         PlaceableSpeedCamera.onSpeedCameraTriggerCallback)
     SpecializationUtil.registerFunction(placeableType, "calculateCost", PlaceableSpeedCamera.calculateCost)
     SpecializationUtil.registerFunction(placeableType, "round", PlaceableSpeedCamera.round)
+    SpecializationUtil.registerFunction(placeableType, "showPlacementDialog", PlaceableSpeedCamera.showPlacementDialog)
 end
 
 function PlaceableSpeedCamera.registerEventListeners(placeableType)
@@ -102,6 +103,8 @@ function PlaceableSpeedCamera:onFinalizePlacement()
     if spec.flashLight ~= nil then
         setVisibility(spec.flashLight, false)
     end
+
+    self:showPlacementDialog()
 end
 
 function PlaceableSpeedCamera:onUpdate(dt)
@@ -198,5 +201,24 @@ function PlaceableSpeedCamera:onSpeedCameraTriggerCallback(triggerId, otherId, o
                 spec.count = spec.count - 1
             end
         end
+    end
+end
+
+function PlaceableSpeedCamera:onSpeedCameraPlaced(speedLimit, ownerGetsMoney)
+    local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
+
+    Logging.devInfo("manually set values of speed limit (%d) and ownerGetsMoney (%s)", speedLimit, ownerGetsMoney)
+    spec.speedLimit = speedLimit
+    spec.ownerGetsMoney = ownerGetsMoney
+end
+
+function PlaceableSpeedCamera:showPlacementDialog()
+    local dialog = g_gui.guis.PlacementDialog
+    local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
+
+    if dialog ~= nil then
+        dialog.target:setCallback(self.onSpeedCameraPlaced, self, nil, spec.speedLimit, spec.ownerGetsMoney)
+
+        g_gui:showDialog("PlacementDialog")
     end
 end
