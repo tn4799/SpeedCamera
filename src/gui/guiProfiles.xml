@@ -12,7 +12,7 @@
 		<Value name="size" value="60px 40px"/>
     </Profile>
 
-    <Profile name="dialogSpeedLimitTextInput" extends="CmDialogTextInput" with="anchorMiddleCenter">
+    <Profile name="dialogSpeedLimitTextInput" extends="dialogTextInput" with="anchorMiddleCenter">
         <Value name="textSize" value="18px"/>
 		<Value name="maxCharacters" value="3"/>
     </Profile>
