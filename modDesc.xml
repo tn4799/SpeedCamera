@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="68">
+<modDesc descVersion="73">
     <author>tn4799, RickBlackLabele</author>
-    <version>1.1.0.0</version>
+    <version>2.0.0.0</version>
     <title>
         <en>Speed Camera</en>
         <de>Blitzer</de>
@@ -21,6 +21,9 @@ v1.1.0.0
 Fixed a bug with loading values from the placeables.xml.
 Added blinking warning translation so other speed cameras can use the translation if they have enabled this feature.
 Added an option so that the owner of the speed camera gains the money of the fine minus a little transaction fee.
+
+v2.0.0.0
+Added a dialog to configure the values of the speed camera yourself on placement.
 ]]></en>
         <de>
 <![CDATA[Ein Blitzer, der bei ca. 50km/h auslöst.
@@ -36,6 +39,9 @@ v1.1.0.0
 Bug beim Laden der Werte aus der Placeables.xml gefixt.
 Blinking Warning Übersetzung Eingefügt damit andere Blitzer die Übersetzung haben sollten Sie diese die Option nutzen.
 Option hinzugefügt damit der Besitzer des Blitzers die Strafzahlung bekommt abzüglich einer Transaktionsgebühr.
+
+v2.0.0.0
+Dialog zum Einstellen der Werte des Blitzers beim platzieren hinzugefügt
 ]]></de>
     </description>
 
@@ -45,6 +51,7 @@ Option hinzugefügt damit der Besitzer des Blitzers die Strafzahlung bekommt abz
 
     <extraSourceFiles>
         <sourceFile filename="src/SC_PayFineEvent.lua"/>
+		<sourceFile filename="src/gui/PlacementDialog.lua"/>
 		<sourceFile filename="src/registerDialog.lua"/>
     </extraSourceFiles>
 
