@@ -5,16 +5,21 @@
     <GuiElement type="bitmap" profile="bgGlowDialog" />
 
     <GuiElement type="bitmap" profile="speedCameraConfigurationDialog" id="dialogElement">
-        <GuiElement type="text" profile="dialogTextPassword" text="$l10n_dialog_speedCamera_title" id="dialogTitle" position="0px -20px"/>
+        <GuiElement type="text" profile="title" text="$l10n_dialog_speedCamera_title" id="dialogTitle" position="0px -20px"/>
 
-        <GuiElement type="text" profile="dialogTextSpeedCamera" text="$l10n_dialog_speedLimit_text" position="3px 19px"/>
-        <GuiElement type="textInput" profile="dialogSpeedLimitTextInput" position="0px 28px" text="50" id="speedLimitInput" onEnterPressed="onSpeedLimitEnterPressed" onEscPressed="onEscPressed" onFocus="onInputFocus" onLeave="onInputLeave" imeKeyboardType="normal" imeTitle="" imeDescription="" imePlaceholder="" enterWhenClickOutside="false" />
+
         <!--GuiElement type="text" profile="CmDialogText" text="$l10n_CM_dialog_addPoints_reasonText" position="3px -35px"/>
         <GuiElement type="textInput" profile="CmDialogTextInput" id="reasonInput" position="0px -28px" onEnterPressed="onReasonEnterPressed" onEscPressed="onEscPressed" onFocus="onInputFocus" onLeave="onInputLeave" imeKeyboardType="normal" imeTitle="" imeDescription="" imePlaceholder="" enterWhenClickOutside="false" /-->
 
         <GuiElement type="boxLayout" id="checkboxesBox" profile="checkboxesBoxProfile">
-            <!-- Checkbox: owner gets money-->
-            <GuiElement type="empty" profile="ingameMenuMPActionsListItem" id="checkboxesRow[1]">
+            <GuiElement type="flowLayout" profile="textInputBox">
+                <GuiElement type="text" profile="dialogTextSpeedCamera" text="$l10n_dialog_speedLimit_text" position="10px 19px"/>
+                <GuiElement type="textInput" profile="dialogSpeedLimitTextInput"  text="50" id="speedLimitInput" onEnterPressed="onSpeedLimitEnterPressed" onEscPressed="onEscPressed" onFocus="onInputFocus" onLeave="onInputLeave" imeKeyboardType="normal" imeTitle="" imeDescription="" imePlaceholder="" enterWhenClickOutside="false" />
+            </GuiElement>
+            <!-- Checkbox: owner gets money
+            position="0px 28px"
+            -->
+            <GuiElement type="empty" profile="ingameMenuMPActionsListItem" id="checkboxesRow[1]" position="0px 50px">
                 <GuiElement type="button" profile="ingameMenuMPActionsListPermission" text="$l10n_dialog_ownerGetsMoney_text" />
                 <GuiElement type="toggleButton" profile="ingameMenuMPActionsListPermissionCheckbox"  onClick="onClickGetMoney" id="ownerGetsMoneyCheckbox">
                     <GuiElement type="button" profile="ingameMenuMPActionsListPermissionCheckboxTick"/>
