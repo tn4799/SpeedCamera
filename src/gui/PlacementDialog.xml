@@ -4,7 +4,7 @@
     <GuiElement type="bitmap" profile="bgVignette"/>
     <GuiElement type="bitmap" profile="bgGlowDialog" />
 
-    <GuiElement type="bitmap" profile="speedCameraConfigurationDialog" id="dialog">
+    <GuiElement type="bitmap" profile="speedCameraConfigurationDialog" id="dialogElement">
         <GuiElement type="text" profile="dialogTextPassword" text="$l10n_dialog_speedCamera_title" id="dialogTitle" position="0px -20px"/>
 
         <GuiElement type="text" profile="dialogTextSpeedCamera" text="$l10n_dialog_speedLimit_text" position="3px 19px"/>
@@ -25,7 +25,7 @@
 
         <GuiElement type="flowLayout" profile="buttonBoxDialog" id="buttonsPC" >
             <GuiElement type="button" profile="buttonBack"  text="$l10n_button_cancel"  onClick="onClickBack" id="noButton" />
-            <GuiElement type="button" profile="buttonOK"    text="$l10n_button_save"    onClick="onClickSave" id="saveButton" />
+            <GuiElement type="button" profile="buttonOK"    text="$l10n_button_save"    onClick="onClickSave" id="yesButton" />
         </GuiElement>
     </GuiElement>
 </GUI>
