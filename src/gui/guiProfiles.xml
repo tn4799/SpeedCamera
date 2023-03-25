@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GUIProfiles>
     <Profile name="speedCameraConfigurationDialog" extends="dialogBg">
-        <Value name="size" value="490px 600px"/>
+        <Value name="size" value="490px 300px"/>
     </Profile>
 
-    <Profile name="checkboxesBoxProfile" extends="emptyPanel" with="anchorTopRight">
-        <Value name="size" value="410px 410px" />
+    <Profile name="checkboxesBoxProfile" extends="emptyPanel" with="anchorMiddleCenter">
+        <Value name="size" value="410px 200px" />
+        <Value name="position" value="0px -50px"/>
     </Profile>
 
     <Profile name="dialogTextSpeedCamera" extends="dialogText" with="anchorMiddleLeft">
-		<Value name="size" value="60px 40px"/>
+		<Value name="size" value="110px 48px"/>
+        <Value name="textSize" value="18px"/>
+        <Value name="textVerticalAlignment" value="center"/>
     </Profile>
 
-    <Profile name="dialogSpeedLimitTextInput" extends="dialogTextInput" with="anchorMiddleCenter">
+    <Profile name="dialogSpeedLimitTextInput" extends="dialogTextInput" with="anchorMiddleLeft">
+        <Value name="size" value="300px 48px"/>
         <Value name="textSize" value="18px"/>
 		<Value name="maxCharacters" value="3"/>
+    </Profile>
+
+    <Profile name="textInputBox" extends="buttonBoxDocked">
+        <Value name="size" value="410px 70px"/>
+        <Value name="alignmentX" value="left"/>
+        <Value name="position" value="0px 0px"/>
+    </Profile>
+
+    <Profile name="title" extends="dialogTextPassword" with="anchorTopCenter">
+        <Value name="textSize" value="25px"/>
+        <Value name="textBold" value="true"/>
     </Profile>
 </GUIProfiles>
