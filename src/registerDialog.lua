@@ -1,4 +1,6 @@
-RegisterDialog = {}
+RegisterDialog = {
+    BASE_DIRECTORY = g_currentModDirectory,
+}
 
 RegisterDialog_mt = Class(RegisterDialog)
 
@@ -9,12 +11,14 @@ function RegisterDialog.new(custom_mt)
 end
 
 function RegisterDialog:loadMap()
+    g_gui:loadProfiles(Utils.getFilename("src/gui/guiProfiles.xml", RegisterDialog.BASE_DIRECTORY))
     self:setupDialogs()
 end
 
 function RegisterDialog:setupDialogs()
     local dialog = PlacementDialog.new()
-    g_gui:loadGui(Utils.getFilename("src/gui/PlacementDialog.xml", g_currentModDirectory), "PlacementDialog", dialog, false)
+    local filename = Utils.getFilename("src/gui/PlacementDialog.xml", RegisterDialog.BASE_DIRECTORY)
+    g_gui:loadGui(filename, "PlacementDialog", dialog, false)
 end
 
-addModEventListener(g_challengeMod)
+addModEventListener(RegisterDialog.new())
