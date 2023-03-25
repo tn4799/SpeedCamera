@@ -3,14 +3,14 @@ PlacementDialog = {}
 PlacementDialog_mt = Class(PlacementDialog, YesNoDialog)
 
 PlacementDialog.CONTROLS = {
-    DIALOG = "dialog",
+    DIALOG = "dialogElement",
     DIALOG_TITLE = "dialogTitle",
     SPEED_LIMIT_INPUT = "speedLimitInput",
     CHECKBOXES_BOX = "checkboxesBox",
     CHECKBOXES_ROW = "checkboxesRow",
     OWNER_GETS_MONEY_CHECKBOX = "ownerGetsMoneyCheckbox",
     NO_BUTTON = "noButton",
-    SAVE_BUTTON = "saveButton"
+    YES_BUTTON = "yesButton"
 }
 
 PlacementDialog.translations = {
@@ -55,7 +55,7 @@ function PlacementDialog:setCallback(onTextEntered, target, callbackArgs, defaul
     self.target = target
     self.callbackArgs = callbackArgs
 
-    self.speedLimitInput:setText(defaultSpeedLimitText or "50")
+    self.speedLimitInput:setText(tostring(defaultSpeedLimitText) or "50")
     self.ownerGetsMoneyCheckbox:setIsChecked(defaultOwnerGetsMoney or false)
 
     if dialogPrompt ~= nil then
@@ -105,12 +105,12 @@ end
 function PlacementDialog:updateButtonVisibility()
     local showButtons = not self.speedLimitInput.imeActive
 
-    if self.saveButton ~= nil then
-        self.saveButton:setVisibility(showButtons)
+    if self.yesButton ~= nil then
+        self.yesButton:setVisible(showButtons)
     end
 
     if self.noButton ~= nil then
-        self.noButton:setVisibility(showButtons)
+        self.noButton:setVisible(showButtons)
     end
 end
 
