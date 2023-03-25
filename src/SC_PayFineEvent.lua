@@ -32,6 +32,6 @@ function SC_PayFineEvent:run(connection)
     if not connection:getIsServer() then
         g_currentMission:addMoney(self.fine, self.farmId, MoneyType.OTHER)
     else
-        print("Error: run-method of SpeedCamera executed on client");
+        Logging.error("run-method of SpeedCamera executed on client");
     end
 end
