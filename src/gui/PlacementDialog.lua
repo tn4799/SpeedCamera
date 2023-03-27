@@ -127,12 +127,6 @@ end
 
 function PlacementDialog:onSpeedLimitEnterPressed()
     self:focusOwnerGetsMoneyCheckbox()
-    --TODO: transfer focus on checkbox of ownerGetsMoney
-end
-
-function PlacementDialog:onOwnerGetsMoney()
-    print("test")
-    --self.ownerGetsMoneyCheckbox:onButtonClicked()
 end
 
 function PlacementDialog:onEscPressed()
