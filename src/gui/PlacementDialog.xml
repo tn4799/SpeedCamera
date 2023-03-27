@@ -15,7 +15,7 @@
             <!-- Checkbox: owner gets money-->
             <GuiElement type="empty" profile="ingameMenuMPActionsListItem" id="checkboxesRow[1]" position="0px 50px">
                 <GuiElement type="button" profile="ingameMenuMPActionsListPermission" text="$l10n_dialog_ownerGetsMoney_text" />
-                <GuiElement type="toggleButton" profile="ingameMenuMPActionsListPermissionCheckbox" onClick="onOwnerGetsMoney" id="ownerGetsMoneyCheckbox">
+                <GuiElement type="toggleButton" profile="ingameMenuMPActionsListPermissionCheckbox" id="ownerGetsMoneyCheckbox">
                     <GuiElement type="button" profile="ingameMenuMPActionsListPermissionCheckboxTick"/>
                     <GuiElement type="button" profile="ingameMenuMPActionsListPermissionCheckboxUntick"/>
                 </GuiElement>
@@ -24,7 +24,7 @@
 
         <GuiElement type="flowLayout" profile="buttonBoxDialog" id="buttonsPC" >
             <GuiElement type="button" profile="buttonBack"  text="$l10n_button_cancel"  onClick="onClickBack" id="noButton" />
-            <GuiElement type="button" profile="buttonOK"    text="$l10n_button_save"    onClick="onClickSave" id="yesButton" />
+            <GuiElement type="button" profile="buttonOK"    text="$l10n_button_save"    onClick="onClickSave" id="yesButton" inputAction="MENU_ACTIVATE" />
         </GuiElement>
     </GuiElement>
 </GUI>
