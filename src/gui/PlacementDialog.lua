@@ -68,19 +68,11 @@ function PlacementDialog:sendCallback(clickOk)
     local ownerGetsMoney = self.ownerGetsMoneyCheckbox.isChecked
 
     if clickOk then
-        local function enterSpeedLimit(self)
-            self:focusSpeedLimitInput()
-            self.speedLimitInput:setForcePressed(true)
+        local function enterSpeedLimit(this)
+            this:focusSpeedLimitInput()
+            this.speedLimitInput:setForcePressed(true)
         end
-        if speedLimit <= 0 then
-            g_gui:showInfoDialog({
-                text = PlacementDialog.translations.errors.invalidSpeedLimit,
-                dialogType = DialogElement.TYPE_WARNING,
-                target = self,
-                callback = enterSpeedLimit
-            })
-            return
-        elseif speedLimit == nil then
+        if speedLimit == nil then
             g_gui:showInfoDialog({
                 text = PlacementDialog.translations.errors.notANumber,
                 dialogType = DialogElement.TYPE_WARNING,
@@ -88,6 +80,17 @@ function PlacementDialog:sendCallback(clickOk)
                 callback = enterSpeedLimit
             })
             return
+        else
+            speedLimit = math.floor(speedLimit)
+            if speedLimit <= 0 then
+                g_gui:showInfoDialog({
+                    text = PlacementDialog.translations.errors.invalidSpeedLimit,
+                    dialogType = DialogElement.TYPE_WARNING,
+                    target = self,
+                    callback = enterSpeedLimit
+                })
+                return
+            end
         end
     end
 
@@ -123,8 +126,13 @@ function PlacementDialog:update(dt)
 end
 
 function PlacementDialog:onSpeedLimitEnterPressed()
-    --self:focusOwnerGetsMoneyCheckbox()
+    self:focusOwnerGetsMoneyCheckbox()
     --TODO: transfer focus on checkbox of ownerGetsMoney
+end
+
+function PlacementDialog:onOwnerGetsMoney()
+    print("test")
+    --self.ownerGetsMoneyCheckbox:onButtonClicked()
 end
 
 function PlacementDialog:onEscPressed()
@@ -154,4 +162,9 @@ end
 function PlacementDialog:focusSpeedLimitInput()
     FocusManager:setFocus(self.speedLimitInput)
     self.speedLimitInput:onFocusActivate()
+end
+
+function PlacementDialog:focusOwnerGetsMoneyCheckbox()
+    FocusManager:setFocus(self.ownerGetsMoneyCheckbox)
+    --self.ownerGetsMoneyCheckbox:onFocusActivate()
 end
