@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="73">
     <author>tn4799, RickBlackLabele</author>
-    <version>2.0.0.0</version>
+    <version>2.1.0.0</version>
     <title>
         <en>Speed Camera</en>
         <de>Blitzer</de>
@@ -14,7 +14,7 @@ If you drive too fast while passing the speed camera you will be flashed and hav
 The speed camera works in both directions.
 One speed camera initally costs 150000$. After that the daily upkeep is 1000$.
 
-For the future it is still planned that you can set the speed limit when placing.
+When placing the speed camera a dialog shows up to allow the configuration of the speed limit of the speed camera.
 
 Changelog:
 v1.1.0.0
@@ -24,6 +24,9 @@ Added an option so that the owner of the speed camera gains the money of the fin
 
 v2.0.0.0
 Added a dialog to configure the values of the speed camera yourself on placement.
+
+v2.1.0.0
+Added possibility to allow placement on non-buyable farmland
 ]]></en>
         <de>
 <![CDATA[Ein Blitzer, der bei ca. 50km/h auslöst.
@@ -32,7 +35,7 @@ Wenn man zu schnell ist, während man am Blitzer vorbeifährt, wird man geblitzt
 Der Blitzer funktioniert in beide Fahrtrichtungen.
 Ein Blitzer kostet 150000€ in der Anschaffung und anschließend 1000€/Tag Unterhaltskosten.
 
-Für die Zukunft ist noch geplant, dass man das Geschwindigkeitslimit beim Platzieren einstellen kann.
+Beim Platzieren des Blitzers erscheint ein Dialog, mit dem man einstellen kann ab welcher Geschwindigkeit der Blitzer ausgelöst wird.
 
 Changelog:
 v1.1.0.0
@@ -42,6 +45,9 @@ Option hinzugefügt damit der Besitzer des Blitzers die Strafzahlung bekommt abz
 
 v2.0.0.0
 Dialog zum Einstellen der Werte des Blitzers beim platzieren hinzugefügt
+
+v2.1.0.0
+Möglichkeit hinzugefügt, den Blitzer auf nicht kaufbarem Land zu platzieren
 ]]></de>
     </description>
 
@@ -53,6 +59,7 @@ Dialog zum Einstellen der Werte des Blitzers beim platzieren hinzugefügt
         <sourceFile filename="src/SC_PayFineEvent.lua"/>
 		<sourceFile filename="src/gui/PlacementDialog.lua"/>
 		<sourceFile filename="src/registerDialog.lua"/>
+		<sourceFile filename="src/placeOnNonbuyableFarmland.lua"/>
     </extraSourceFiles>
 
 	<placeableSpecializations>
