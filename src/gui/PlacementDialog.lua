@@ -1,6 +1,6 @@
 PlacementDialog = {}
 
-PlacementDialog_mt = Class(PlacementDialog, YesNoDialog)
+PlacementDialog_mt = Class(PlacementDialog, TextInputDialog)
 
 PlacementDialog.CONTROLS = {
     DIALOG = "dialogElement",
@@ -9,7 +9,6 @@ PlacementDialog.CONTROLS = {
     CHECKBOXES_BOX = "checkboxesBox",
     CHECKBOXES_ROW = "checkboxesRow",
     OWNER_GETS_MONEY_CHECKBOX = "ownerGetsMoneyCheckbox",
-    NO_BUTTON = "noButton",
     YES_BUTTON = "yesButton"
 }
 
@@ -23,7 +22,7 @@ PlacementDialog.translations = {
 local function NO_CALLBACK() end
 
 function PlacementDialog.new(target, custom_mt)
-    local self = YesNoDialog.new(target, custom_mt or PlacementDialog_mt)
+    local self = TextInputDialog.new(target, custom_mt or PlacementDialog_mt)
 
     self:registerControls(PlacementDialog.CONTROLS)
 
@@ -112,9 +111,9 @@ function PlacementDialog:updateButtonVisibility()
         self.yesButton:setVisible(showButtons)
     end
 
-    if self.noButton ~= nil then
+    --[[if self.noButton ~= nil then
         self.noButton:setVisible(showButtons)
-    end
+    end]]
 end
 
 function PlacementDialog:update(dt)
@@ -129,9 +128,9 @@ function PlacementDialog:onSpeedLimitEnterPressed()
     self:focusOwnerGetsMoneyCheckbox()
 end
 
-function PlacementDialog:onEscPressed()
+--[[function PlacementDialog:onEscPressed()
     return self:onClickBack()
-end
+end]]
 
 function PlacementDialog:onClickSave()
     if not self:isInputDisabled() then
@@ -143,7 +142,7 @@ function PlacementDialog:onClickSave()
     end
 end
 
-function PlacementDialog:onClickBack()
+--[[function PlacementDialog:onClickBack()
     if not self:isInputDisabled() then
         self:sendCallback(false)
 
@@ -151,7 +150,7 @@ function PlacementDialog:onClickBack()
     else
         return true
     end
-end
+end]]
 
 function PlacementDialog:focusSpeedLimitInput()
     FocusManager:setFocus(self.speedLimitInput)
