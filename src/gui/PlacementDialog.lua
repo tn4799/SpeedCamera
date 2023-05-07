@@ -1,6 +1,6 @@
 PlacementDialog = {}
 
-PlacementDialog_mt = Class(PlacementDialog, TextInputDialog)
+PlacementDialog_mt = Class(PlacementDialog, YesNoDialog)
 
 PlacementDialog.CONTROLS = {
     DIALOG = "dialogElement",
