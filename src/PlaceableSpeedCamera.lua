@@ -17,6 +17,8 @@ function PlaceableSpeedCamera.registerEventListeners(placeableType)
     SpecializationUtil.registerEventListener(placeableType, "onLoad", PlaceableSpeedCamera)
     SpecializationUtil.registerEventListener(placeableType, "onDelete", PlaceableSpeedCamera)
     SpecializationUtil.registerEventListener(placeableType, "onUpdate", PlaceableSpeedCamera)
+    SpecializationUtil.registerEventListener(placeableType, "onWriteStream", PlaceableSpeedCamera)
+    SpecializationUtil.registerEventListener(placeableType, "onReadStream", PlaceableSpeedCamera)
     SpecializationUtil.registerEventListener(placeableType, "onFinalizePlacement", PlaceableSpeedCamera)
     SpecializationUtil.registerEventListener(placeableType, "onBuy", PlaceableSpeedCamera)
 end
@@ -108,6 +110,19 @@ end
 
 function PlaceableSpeedCamera:onBuy()
     self:showPlacementDialog()
+    print("onBuy")
+end
+
+function PlaceableSpeedCamera:onWriteStream(streamId, connection)
+    local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
+
+    print("onWriteStream")
+end
+
+function PlaceableSpeedCamera:onReadStream(streamId, connection)
+    local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
+
+    print("onReadStream")
 end
 
 function PlaceableSpeedCamera:onUpdate(dt)
