@@ -9,7 +9,8 @@ PlacementDialog.CONTROLS = {
     CHECKBOXES_BOX = "checkboxesBox",
     CHECKBOXES_ROW = "checkboxesRow",
     OWNER_GETS_MONEY_CHECKBOX = "ownerGetsMoneyCheckbox",
-    YES_BUTTON = "yesButton"
+    YES_BUTTON = "yesButton",
+    NO_BUTTON = "noButton"
 }
 
 PlacementDialog.translations = {
@@ -38,6 +39,7 @@ function PlacementDialog:onOpen()
     self.extraInputDisableTime = 100
     self.speedLimitInput.blockTime = 0
     self:focusSpeedLimitInput()
+    self.noButton:setVisible(false)
     self:updateButtonVisibility()
 end
 
