@@ -10,7 +10,7 @@
         <GuiElement type="boxLayout" id="checkboxesBox" profile="checkboxesBoxProfile">
             <GuiElement type="flowLayout" profile="textInputBox">
                 <GuiElement type="text" profile="dialogTextSpeedCamera" text="$l10n_dialog_speedLimit_text" position="10px 19px"/>
-                <GuiElement type="textInput" profile="dialogSpeedLimitTextInput"  text="50" id="speedLimitInput" onEnterPressed="onSpeedLimitEnterPressed" onEscPressed="onEscPressed" onFocus="onInputFocus" onLeave="onInputLeave" imeKeyboardType="normal" imeTitle="" imeDescription="" imePlaceholder="" enterWhenClickOutside="false" />
+                <GuiElement type="textInput" profile="dialogSpeedLimitTextInput"  text="50" id="textElement" onEnterPressed="onSpeedLimitEnterPressed" onEscPressed="onEscPressed" onFocus="onInputFocus" onLeave="onInputLeave" imeKeyboardType="normal" imeTitle="" imeDescription="" imePlaceholder="" enterWhenClickOutside="false" />
             </GuiElement>
             <!-- Checkbox: owner gets money-->
             <GuiElement type="empty" profile="ingameMenuMPActionsListItem" id="checkboxesRow[1]" position="0px 50px">
@@ -23,7 +23,7 @@
         </GuiElement>
 
         <GuiElement type="flowLayout" profile="buttonBoxDialog" id="buttonsPC" >
-            <!--GuiElement type="button" profile="buttonBack"  text="$l10n_button_cancel"  onClick="onClickBack" id="noButton" /-->
+            <GuiElement type="button" profile="buttonBack"  text="$l10n_button_cancel"  onClick="onClickBack" id="noButton" />
             <GuiElement type="button" profile="buttonOK"    text="$l10n_button_save"    onClick="onClickSave" id="yesButton" inputAction="MENU_ACTIVATE" />
         </GuiElement>
     </GuiElement>

@@ -5,11 +5,12 @@ PlacementDialog_mt = Class(PlacementDialog, TextInputDialog)
 PlacementDialog.CONTROLS = {
     DIALOG = "dialogElement",
     DIALOG_TITLE = "dialogTitle",
-    SPEED_LIMIT_INPUT = "speedLimitInput",
+    TEXT_ELEMENT = "textElement",
     CHECKBOXES_BOX = "checkboxesBox",
     CHECKBOXES_ROW = "checkboxesRow",
     OWNER_GETS_MONEY_CHECKBOX = "ownerGetsMoneyCheckbox",
-    YES_BUTTON = "yesButton"
+    YES_BUTTON = "yesButton",
+    NO_BUTTON = "noButton"
 }
 
 PlacementDialog.translations = {
@@ -25,6 +26,7 @@ function PlacementDialog.new(target, custom_mt)
     local self = TextInputDialog.new(target, custom_mt or PlacementDialog_mt)
 
     self:registerControls(PlacementDialog.CONTROLS)
+    --self.noButton:setVisible(false)
 
     self.onTextEntered = NO_CALLBACK
     self.extraInputDisableTime = 0
@@ -36,15 +38,15 @@ function PlacementDialog:onOpen()
     PlacementDialog:superClass().onOpen(self)
 
     self.extraInputDisableTime = 100
-    self.speedLimitInput.blockTime = 0
-    self:focusSpeedLimitInput()
+    self.textElement.blockTime = 0
+    self:focusTextElement()
     self:updateButtonVisibility()
 end
 
 function PlacementDialog:onClose()
     PlacementDialog:superClass().onClose(self)
 
-    self.speedLimitInput:setForcePressed(false)
+    self.textElement:setForcePressed(false)
 
     self:updateButtonVisibility()
 end
@@ -54,7 +56,7 @@ function PlacementDialog:setCallback(onTextEntered, target, callbackArgs, defaul
     self.target = target
     self.callbackArgs = callbackArgs
 
-    self.speedLimitInput:setText(tostring(defaultSpeedLimitText) or "50")
+    self.textElement:setText(tostring(defaultSpeedLimitText) or "50")
     self.ownerGetsMoneyCheckbox:setIsChecked(defaultOwnerGetsMoney or false)
 
     if dialogPrompt ~= nil then
@@ -63,13 +65,13 @@ function PlacementDialog:setCallback(onTextEntered, target, callbackArgs, defaul
 end
 
 function PlacementDialog:sendCallback(clickOk)
-    local speedLimit = tonumber(self.speedLimitInput:getText())
+    local speedLimit = tonumber(self.textElement:getText())
     local ownerGetsMoney = self.ownerGetsMoneyCheckbox.isChecked
 
     if clickOk then
         local function enterSpeedLimit(this)
-            this:focusSpeedLimitInput()
-            this.speedLimitInput:setForcePressed(true)
+            this:focustextElement()
+            this.textElement:setForcePressed(true)
         end
         if speedLimit == nil then
             g_gui:showInfoDialog({
@@ -105,12 +107,13 @@ function PlacementDialog:isInputDisabled()
 end
 
 function PlacementDialog:updateButtonVisibility()
-    local showButtons = not self.speedLimitInput.imeActive
+    local showButtons = not self.textElement.imeActive
 
     if self.yesButton ~= nil then
         self.yesButton:setVisible(showButtons)
     end
 
+    self.noButton:setVisible(false)
     --[[if self.noButton ~= nil then
         self.noButton:setVisible(showButtons)
     end]]
@@ -152,9 +155,9 @@ end
     end
 end]]
 
-function PlacementDialog:focusSpeedLimitInput()
-    FocusManager:setFocus(self.speedLimitInput)
-    self.speedLimitInput:onFocusActivate()
+function PlacementDialog:focusTextElement()
+    FocusManager:setFocus(self.textElement)
+    self.textElement:onFocusActivate()
 end
 
 function PlacementDialog:focusOwnerGetsMoneyCheckbox()
