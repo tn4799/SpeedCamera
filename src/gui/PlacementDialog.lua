@@ -1,6 +1,6 @@
 PlacementDialog = {}
 
-PlacementDialog_mt = Class(PlacementDialog, TextInputDialog)
+PlacementDialog_mt = Class(PlacementDialog, YesNoDialog)
 
 PlacementDialog.CONTROLS = {
     DIALOG = "dialogElement",
@@ -40,6 +40,7 @@ function PlacementDialog:onOpen()
     self.extraInputDisableTime = 100
     self.textElement.blockTime = 0
     self:focusTextElement()
+    self.noButton:setVisible(false)
     self:updateButtonVisibility()
 end
 
