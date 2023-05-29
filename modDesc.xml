@@ -57,6 +57,7 @@ Möglichkeit hinzugefügt, den Blitzer auf nicht kaufbarem Land zu platzieren
 
     <extraSourceFiles>
         <sourceFile filename="src/SC_PayFineEvent.lua"/>
+		<sourceFile filename="src/SpeedCameraValuesConfiguredEvent.lua"/>
 		<sourceFile filename="src/gui/PlacementDialog.lua"/>
 		<sourceFile filename="src/registerDialog.lua"/>
 		<sourceFile filename="src/placeOnNonbuyableFarmland.lua"/>
