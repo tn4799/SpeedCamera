@@ -1,8 +1,9 @@
 PlaceableSpeedCamera = {
     prerequisitesPresent = function(specializations)
-        return true
+        return SpeczializationUtil.hasSpecialization(PlaceableInfoTrigger, specializations)
     end,
-    TRANSACTION_FEE = 0.9
+    TRANSACTION_FEE = 0.9,
+    ACTIVATION_TEXT = "action_openDialog"
 }
 
 function PlaceableSpeedCamera.registerFunctions(placeableType)
@@ -19,6 +20,10 @@ function PlaceableSpeedCamera.registerEventListeners(placeableType)
     SpecializationUtil.registerEventListener(placeableType, "onUpdate", PlaceableSpeedCamera)
     SpecializationUtil.registerEventListener(placeableType, "onFinalizePlacement", PlaceableSpeedCamera)
     SpecializationUtil.registerEventListener(placeableType, "onBuy", PlaceableSpeedCamera)
+    SpecializationUtil.registerEventListener(placeableType, "onWriteStream", PlaceableSpeedCamera)
+    SpecializationUtil.registerEventListener(placeableType, "onReadStream", PlaceableSpeedCamera)
+    SpecializationUtil.registerEventListener(placeableType, "onInfoTriggerEnter", PlaceableSpeedCamera)
+    SpecializationUtil.registerEventListener(placeableType, "onInfoTriggerLeave", PlaceableSpeedCamera)
 end
 
 function PlaceableSpeedCamera.registerXMLPaths(schema, basePath)
@@ -62,6 +67,8 @@ function PlaceableSpeedCamera:onLoad(savegame)
     if spec.triggerMarkers ~= nil then
         setVisibility(spec.triggerMarkers, true)
     end
+
+    spec.activatable = PlaceableSpeedCameraActivateable.new(self)
 end
 
 function PlaceableSpeedCamera:saveToXMLFile(xmlFile, key, usedModNames)
@@ -126,6 +133,18 @@ function PlaceableSpeedCamera:onUpdate(dt)
             setVisibility(spec.flashLight, false)
         end
     end
+end
+
+function PlaceableSpeedCamera:onInfoTriggerEnter(objectId)
+    local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
+    print("add speed camera activatable")
+    g_currentMission.activatableObjectsSystem:addActivatable(spec.activatable)
+end
+
+function PlaceableSpeedCamera:onInfoTriggerLeave(objectId)
+    local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
+    print("remove speed camera activatable")
+    g_currentMission.activatableObjectsSystem:removeActivatable(spec.activatable)
 end
 
 function PlaceableSpeedCamera:calculateCost(spec, speed)
@@ -225,4 +244,32 @@ function PlaceableSpeedCamera:showPlacementDialog()
 
         g_gui:showDialog("PlacementDialog")
     end
+end
+
+PlaceableSpeedCameraActivateable = {}
+local PlaceableSpeedCameraActivateable_mt = Class(PlaceableSpeedCameraActivateable)
+
+function PlaceableSpeedCameraActivateable.new(placeable)
+    local self = setmetatable({}, PlaceableSpeedCameraActivateable_mt)
+    self.placeable = placeable
+    self.activateText = g_i18n:getText(PlaceableSpeedCamera.ACTIVATION_TEXT)
+
+    return self
+end
+
+function PlaceableSpeedCameraActivateable:run()
+    --open dialog
+    self.placeable:showPlacementDialog()
+end
+
+function PlaceableSpeedCameraActivateable:getDistance(x, y, z)
+    local infoTrigger = self.placeable.spec_infoTrigger
+
+	if infoTrigger.triggerNode ~= nil then
+		local tx, ty, tz = getWorldTranslation(infoTrigger.triggerNode)
+
+		return MathUtil.vector3Length(x - tx, y - ty, z - tz)
+	end
+
+	return math.huge
 end
