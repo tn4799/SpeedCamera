@@ -49,10 +49,12 @@
     </leveling>
 
     <indoorAreas/>
-	
+
     <tipOcclusionUpdateAreas>
         <tipOcclusionUpdateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End" />
     </tipOcclusionUpdateAreas>
+
+    <infoTrigger triggerNode="infoTrigger" />
 
     <ai>
         <updateAreas>
@@ -80,5 +82,6 @@
         <i3dMapping id="tipOcclusionUpdateArea1Start" node="0>7|0" />
         <i3dMapping id="tipOcclusionUpdateArea1End" node="0>7|0|0" />
 		<i3dMapping id="triggerMarkersNode" node="0>2" />
+        <i3dMapping id="infoTrigger" node="0>9" />
     </i3dMappings>
 </placeable>

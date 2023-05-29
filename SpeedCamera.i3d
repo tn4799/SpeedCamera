@@ -10,21 +10,21 @@
     <File fileId="12" filename="$data/maps/textures/shared/warningStripes_normal.dds"/>
     <File fileId="13" filename="$data/maps/textures/shared/warningStripes_specular.dds"/>
     <File fileId="4" filename="$data/shaders/vehicleShader.xml"/>
-    <File fileId="9" filename="$data/shared/window_specular.dds"/>
     <File fileId="2" filename="$data/shared/default_normal.dds"/>
     <File fileId="3" filename="$data/shared/default_vmask.dds"/>
+    <File fileId="9" filename="$data/shared/window_specular.dds"/>
     <File fileId="8" filename="textures/window_diffuse.dds"/>
   </Files>
 
 
   <Materials>
-    <Material name="DarkWindow" materialId="4" alphaBlending="true" customShaderId="4">
+    <Material name="DarkWindow" materialId="53" alphaBlending="true" customShaderId="4">
       <Texture fileId="8"/>
       <Glossmap fileId="9"/>
       <CustomParameter name="RDT" value="0 0 0 0"/>
       <CustomParameter name="dirtColor" value="0.2 0.14 0.08 0"/>
     </Material>
-    <Material name="initialShadingGroup" materialId="5" diffuseColor="0.054902 0.054902 0.054902 1" customShaderId="4" customShaderVariation="colorMask">
+    <Material name="initialShadingGroup" materialId="54" diffuseColor="0.054902 0.054902 0.054902 1" customShaderId="4" customShaderVariation="colorMask">
       <Normalmap fileId="2"/>
       <Glossmap fileId="3"/>
       <CustomParameter name="RDT" value="0 0 0 0"/>
@@ -38,12 +38,14 @@
       <CustomParameter name="colorMat6" value="1 0.1 1 1"/>
       <CustomParameter name="colorMat7" value="0.1 1 1 1"/>
     </Material>
-    <Material name="Markers" materialId="6">
+    <Material name="lambert1" materialId="96" diffuseColor="0.494118 0.494118 0.494118 1">
+    </Material>
+    <Material name="Markers" materialId="55">
       <Texture fileId="11"/>
       <Normalmap fileId="12"/>
       <Glossmap fileId="13"/>
     </Material>
-    <Material name="Material" materialId="7" diffuseColor="1 1 1 1" customShaderId="4" customShaderVariation="staticLight">
+    <Material name="Material" materialId="56" diffuseColor="1 1 1 1" customShaderId="4" customShaderVariation="staticLight">
       <CustomParameter name="RDT" value="0 0 0 0"/>
       <CustomParameter name="dirtColor" value="0.2 0.14 0.08 0"/>
       <CustomParameter name="colorMat0" value="0.8 0.55 0.05 1"/>
@@ -57,7 +59,7 @@
       <CustomParameter name="lightControl" value="200 0 0 0"/>
       <CustomParameter name="blinkOffset" value="0 0 1 0"/>
     </Material>
-    <Material name="UnnamedMaterial" materialId="8" diffuseColor="1 1 1 1">
+    <Material name="UnnamedMaterial" materialId="57" diffuseColor="1 1 1 1">
     </Material>
   </Materials>
 
@@ -70,43 +72,44 @@
   </Dynamics>
 
   <Scene>
-      <Shape shapeId="1" name="pCylinder1" rotation="90 -0 0" clipDistance="300" nodeId="20" materialIds="5" castsShadows="true" receiveShadows="true">
-        <Shape shapeId="2" name="pCylinder1.001" clipDistance="300" nodeId="21" materialIds="4" castsShadows="true" receiveShadows="true"/>
-        <Shape shapeId="3" name="Blitzer" rotation="3.39259e-13 -0 0" scale="0.6 0.6 0.6" clipDistance="300" nodeId="22" materialIds="7">
-          <Shape shapeId="4" name="pCylinder1.004" rotation="4.07111e-13 -0 0" clipDistance="300" nodeId="23" materialIds="7" castsShadows="true" receiveShadows="true"/>
+      <Shape shapeId="1" name="pCylinder1" rotation="90 -0 0" clipDistance="300" nodeId="69" materialIds="54" castsShadows="true" receiveShadows="true">
+        <Shape shapeId="2" name="pCylinder1.001" clipDistance="300" nodeId="70" materialIds="53" castsShadows="true" receiveShadows="true"/>
+        <Shape shapeId="3" name="Blitzer" rotation="3.39259e-13 -0 0" scale="0.6 0.6 0.6" clipDistance="300" nodeId="71" materialIds="56">
+          <Shape shapeId="4" name="pCylinder1.004" rotation="4.07111e-13 -0 0" clipDistance="300" nodeId="72" materialIds="56" castsShadows="true" receiveShadows="true"/>
         </Shape>
-        <TransformGroup name="Marker" translation="0 -3.37739e-08 -0.5" rotation="-90 -0 0" visibility="false" nodeId="24">
-          <Shape shapeId="5" name="markers" translation="-2.59071 0 0" rotation="90 -0 0" scale="0.5 0.5 0.5" clipDistance="300" nodeId="25" materialIds="6">
-            <Shape shapeId="6" name="markers.002" clipDistance="300" nodeId="26" materialIds="6"/>
+        <TransformGroup name="Marker" translation="0 -3.37739e-08 -0.5" rotation="-90 -0 0" visibility="false" nodeId="73">
+          <Shape shapeId="5" name="markers" translation="-2.59071 0 0" rotation="90 -0 0" scale="0.5 0.5 0.5" clipDistance="300" nodeId="74" materialIds="55">
+            <Shape shapeId="6" name="markers.002" clipDistance="300" nodeId="75" materialIds="55"/>
           </Shape>
-          <Shape shapeId="7" name="markers" translation="-11.5003 0 0" rotation="90 -0 0" scale="0.5 0.5 0.5" clipDistance="300" nodeId="27" materialIds="6">
-            <Shape shapeId="8" name="markers.003" rotation="-4.07111e-13 -0 0" clipDistance="300" nodeId="28" materialIds="6"/>
+          <Shape shapeId="7" name="markers" translation="-11.5003 0 0" rotation="90 -0 0" scale="0.5 0.5 0.5" clipDistance="300" nodeId="76" materialIds="55">
+            <Shape shapeId="8" name="markers.003" rotation="-4.07111e-13 -0 0" clipDistance="300" nodeId="77" materialIds="55"/>
           </Shape>
         </TransformGroup>
-        <Shape shapeId="9" name="trigger" rotation="-90 -1.47476e-06 0" scale="13 3 1" visibility="false" static="true" trigger="true" collisionMask="2097152" clipDistance="300" nodeId="29" materialIds="8" nonRenderable="true" distanceBlending="false"/>
-        <TransformGroup name="levelAreas" rotation="-90 -0 0" nodeId="30">
-          <TransformGroup name="levelArea1Start" translation="-0.5 0 -0.5" nodeId="31">
-            <TransformGroup name="levelArea1Width" translation="0 0 1" nodeId="32"/>
-            <TransformGroup name="levelArea1Height" translation="1 0 1" nodeId="33"/>
+        <Shape shapeId="9" name="trigger" rotation="-90 -1.47476e-06 0" scale="13 3 1" visibility="false" static="true" trigger="true" collisionMask="2097152" clipDistance="300" nodeId="78" materialIds="57" nonRenderable="true" distanceBlending="false"/>
+        <TransformGroup name="levelAreas" rotation="-90 -0 0" nodeId="79">
+          <TransformGroup name="levelArea1Start" translation="-0.5 0 -0.5" nodeId="80">
+            <TransformGroup name="levelArea1Width" translation="0 0 1" nodeId="81"/>
+            <TransformGroup name="levelArea1Height" translation="1 0 1" nodeId="82"/>
           </TransformGroup>
         </TransformGroup>
-        <TransformGroup name="clearAreas" rotation="-90 -0 0" nodeId="34">
-          <TransformGroup name="clearArea1Start" translation="-0.5 0 -0.5" nodeId="35">
-            <TransformGroup name="clearArea1Width" translation="1 0 5.68434e-16" nodeId="36"/>
-            <TransformGroup name="clearArea1Height" translation="1 0 1" nodeId="37"/>
+        <TransformGroup name="clearAreas" rotation="-90 -0 0" nodeId="83">
+          <TransformGroup name="clearArea1Start" translation="-0.5 0 -0.5" nodeId="84">
+            <TransformGroup name="clearArea1Width" translation="1 0 5.68434e-16" nodeId="85"/>
+            <TransformGroup name="clearArea1Height" translation="1 0 1" nodeId="86"/>
           </TransformGroup>
         </TransformGroup>
-        <TransformGroup name="testAreas" rotation="-90 -0 0" nodeId="38">
-          <TransformGroup name="testArea1Start" translation="-0.5 0 -0.5" nodeId="39">
-            <TransformGroup name="testArea1End" translation="1 0 1" nodeId="40"/>
+        <TransformGroup name="testAreas" rotation="-90 -0 0" nodeId="87">
+          <TransformGroup name="testArea1Start" translation="-0.5 0 -0.5" nodeId="88">
+            <TransformGroup name="testArea1End" translation="1 0 1" nodeId="89"/>
           </TransformGroup>
         </TransformGroup>
-        <TransformGroup name="tipOcclusionUpdateAreas" rotation="-90 -0 0" nodeId="41">
-          <TransformGroup name="tipOcclusionUpdateArea1Start" translation="-0.5 0 -0.5" nodeId="42">
-            <TransformGroup name="tipOcclusionUpdateArea1End" translation="1 0 1" nodeId="43"/>
+        <TransformGroup name="tipOcclusionUpdateAreas" rotation="-90 -0 0" nodeId="90">
+          <TransformGroup name="tipOcclusionUpdateArea1Start" translation="-0.5 0 -0.5" nodeId="91">
+            <TransformGroup name="tipOcclusionUpdateArea1End" translation="1 0 1" nodeId="92"/>
           </TransformGroup>
         </TransformGroup>
-        <Shape shapeId="10" name="collision" visibility="false" static="true" nodeId="44" materialIds="8" distanceBlending="false"/>
+        <Shape shapeId="10" name="collision" visibility="false" static="true" nodeId="93" materialIds="57" distanceBlending="false"/>
+        <Shape shapeId="11" name="infoTrigger" visibility="false" static="true" trigger="true" collisionMask="1048576" nodeId="99" materialIds="96" castsShadows="true" receiveShadows="true" nonRenderable="true"/>
       </Shape>
   </Scene>
 

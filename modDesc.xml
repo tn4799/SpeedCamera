@@ -69,6 +69,7 @@ Möglichkeit hinzugefügt, den Blitzer auf nicht kaufbarem Land zu platzieren
 	<placeableTypes>
 		<type name="speedCamera" parent="simplePlaceable" filename="$dataS/scripts/placeables/Placeable.lua">
 			<specialization name="placeableSpeedCamera" />
+			<specialization name="infoTrigger"/>
 		</type>
 	</placeableTypes>
 
@@ -125,6 +126,11 @@ Möglichkeit hinzugefügt, den Blitzer auf nicht kaufbarem Land zu platzieren
 		<text name="dialog_error_notANumber">
 			<en>The speed limit has to be a Number greater than 0.</en>
 			<de>Das Tempolimit muss eine Zahl größer als 0 sein.</de>
+		</text>
+
+		<text name="action_openDialog">
+			<en>Open configuration dialog</en>
+			<de>Konfigurationsdialog öffnen</de>
 		</text>
 	</l10n>
 </modDesc>
