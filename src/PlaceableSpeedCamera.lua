@@ -117,19 +117,22 @@ end
 
 function PlaceableSpeedCamera:onBuy()
     self:showPlacementDialog()
-    print("onBuy")
 end
 
 function PlaceableSpeedCamera:onWriteStream(streamId, connection)
     local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
 
-    print("onWriteStream")
+    streamWriteInt32(streamId, spec.speedLimit)
+    streamWriteInt32(streamId, spec.costPerKMH)
+    streamWriteBool(streamId, spec.ownerGetsMoney)
 end
 
 function PlaceableSpeedCamera:onReadStream(streamId, connection)
     local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
 
-    print("onReadStream")
+    spec.speedLimit = streamReadInt32(streamId)
+    spec.costPerKMH = streamReadInt32(streamId)
+    spec.ownerGetsMoney = streamReadBool(streamId)
 end
 
 function PlaceableSpeedCamera:onUpdate(dt)
@@ -152,13 +155,11 @@ end
 
 function PlaceableSpeedCamera:onInfoTriggerEnter(objectId)
     local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
-    print("add speed camera activatable")
     g_currentMission.activatableObjectsSystem:addActivatable(spec.activatable)
 end
 
 function PlaceableSpeedCamera:onInfoTriggerLeave(objectId)
     local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
-    print("remove speed camera activatable")
     g_currentMission.activatableObjectsSystem:removeActivatable(spec.activatable)
 end
 
@@ -245,7 +246,7 @@ function PlaceableSpeedCamera:onSpeedCameraPlaced(speedLimit, ownerGetsMoney)
     local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
 
     Logging.devInfo("manually set values of speed limit (%d) and ownerGetsMoney (%s)", speedLimit, ownerGetsMoney)
-    spec.speedLimit = speedLimit + math.min(5, speedLimit * 0.1)
+    spec.speedLimit = speedLimit + math.round(math.min(5, speedLimit * 0.1))
     spec.ownerGetsMoney = ownerGetsMoney
 end
 
@@ -254,7 +255,7 @@ function PlaceableSpeedCamera:showPlacementDialog()
     local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
 
     if dialog ~= nil then
-        local speedLimit = math.max(spec.speedLimit / 11 * 10, spec.speedLimit - 5)
+        local speedLimit = math.round(math.max(spec.speedLimit / 11 * 10, spec.speedLimit - 5))
         dialog.target:setCallback(self.onSpeedCameraPlaced, self, nil, speedLimit, spec.ownerGetsMoney)
 
         g_gui:showDialog("PlacementDialog")
