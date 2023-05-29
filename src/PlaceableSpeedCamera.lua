@@ -242,14 +242,17 @@ function PlaceableSpeedCamera:onSpeedCameraTriggerCallback(triggerId, otherId, o
     end
 end
 
-function PlaceableSpeedCamera:onSpeedCameraPlaced(speedLimit, ownerGetsMoney, noEventSent)
+function PlaceableSpeedCamera:onSpeedCameraPlaced(speedLimit, ownerGetsMoney, clickOk, args, noEventSend)
     local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
+
+    print("on speed camera placed")
 
     Logging.devInfo("manually set values of speed limit (%d) and ownerGetsMoney (%s)", speedLimit, ownerGetsMoney)
     spec.speedLimit = speedLimit + MathUtil.round(math.min(5, speedLimit * 0.1))
     spec.ownerGetsMoney = ownerGetsMoney
 
-    if not noEventSent or noEventSent == nil then
+    if noEventSend == nil or not noEventSend then
+        print("send event")
         SpeedCameraValuesConfiguredEvent.sendEvent(self, speedLimit, ownerGetsMoney)
     end
 end
