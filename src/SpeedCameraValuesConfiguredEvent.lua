@@ -41,7 +41,7 @@ function SpeedCameraValuesConfiguredEvent:run(connection)
     object:onSpeedCameraPlaced(self.speedLimit, self.ownerGetsMoney, nil, nil, true)
 
     if not connection:getIsServer() then
-        g_server:broadcastEvent(SpeedCameraValuesConfiguredEvent.new(self.id, self.speedLimit, self.ownerGetsMoney))
+        g_server:broadcastEvent(SpeedCameraValuesConfiguredEvent.new(self.id, self.speedLimit, self.ownerGetsMoney), nil, connection)
     end
 end
 
