@@ -153,13 +153,13 @@ end
 
 function PlaceableSpeedCamera:onInfoTriggerEnter(objectId)
     local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
-    print("infoTrigger entered")
-    g_currentMission.activatableObjectsSystem:addActivatable(spec.activatable)
+    if g_currentMission:getHasPlayerPermission("buyPlaceable", nil, self:getOwnerFarmId()) then
+        g_currentMission.activatableObjectsSystem:addActivatable(spec.activatable)
+    end
 end
 
 function PlaceableSpeedCamera:onInfoTriggerLeave(objectId)
     local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
-    print("infoTrigger left")
     g_currentMission.activatableObjectsSystem:removeActivatable(spec.activatable)
 end
 
@@ -245,14 +245,11 @@ end
 function PlaceableSpeedCamera:onSpeedCameraPlaced(speedLimit, ownerGetsMoney, clickOk, args, noEventSend)
     local spec = self["spec_FS22_SpeedCamera.placeableSpeedCamera"]
 
-    print("on speed camera placed")
-
     Logging.devInfo("manually set values of speed limit (%d) and ownerGetsMoney (%s)", speedLimit, ownerGetsMoney)
     spec.speedLimit = speedLimit + MathUtil.round(math.min(5, speedLimit * 0.1))
     spec.ownerGetsMoney = ownerGetsMoney
 
     if noEventSend == nil or not noEventSend then
-        print("send event")
         SpeedCameraValuesConfiguredEvent.sendEvent(self, speedLimit, ownerGetsMoney)
     end
 end
