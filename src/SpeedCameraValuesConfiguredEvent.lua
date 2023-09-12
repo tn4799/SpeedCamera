@@ -27,6 +27,7 @@ function SpeedCameraValuesConfiguredEvent:readStream(streamId, connection)
     self.id = NetworkUtil.readNodeObjectId(streamId)
 	self.speedLimit = streamReadInt32(streamId)
 	self.ownerGetsMoney = streamReadBool(streamId)
+
     self:run(connection)
 end
 
@@ -35,6 +36,7 @@ function SpeedCameraValuesConfiguredEvent:run(connection)
 
     if object == nil then
         Logging.error("Placeable object does not exist!")
+        
         return
     end
 

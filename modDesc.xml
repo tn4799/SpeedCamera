@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="73">
+<modDesc descVersion="77">
     <author>tn4799, RickBlackLabele</author>
     <version>2.1.0.0</version>
     <title>
@@ -18,15 +18,16 @@ When placing the speed camera a dialog shows up to allow the configuration of th
 
 Changelog:
 v1.1.0.0
-Fixed a bug with loading values from the placeables.xml.
-Added blinking warning translation so other speed cameras can use the translation if they have enabled this feature.
-Added an option so that the owner of the speed camera gains the money of the fine minus a little transaction fee.
+ - Fixed a bug with loading values from the placeables.xml.
+ - Added blinking warning translation so other speed cameras can use the translation if they have enabled this feature.
+ - Added an option so that the owner of the speed camera gains the money of the fine minus a little transaction fee.
 
 v2.0.0.0
-Added a dialog to configure the values of the speed camera yourself on placement.
+ - Added a dialog to configure the values of the speed camera yourself on placement.
 
 v2.1.0.0
-Added possibility to allow placement on non-buyable farmland
+ - Added possibility to allow placement on non-buyable farmland
+ - Added possibility to reconfigure the speed camera post placement. To do so you have to stand near the speed camera and then press the activate key
 ]]></en>
         <de>
 <![CDATA[Ein Blitzer, der bei ca. 50km/h auslöst.
@@ -39,15 +40,16 @@ Beim Platzieren des Blitzers erscheint ein Dialog, mit dem man einstellen kann a
 
 Changelog:
 v1.1.0.0
-Bug beim Laden der Werte aus der Placeables.xml gefixt.
-Blinking Warning Übersetzung Eingefügt damit andere Blitzer die Übersetzung haben sollten Sie diese die Option nutzen.
-Option hinzugefügt damit der Besitzer des Blitzers die Strafzahlung bekommt abzüglich einer Transaktionsgebühr.
+ - Bug beim Laden der Werte aus der Placeables.xml gefixt.
+ - Blinking Warning Übersetzung Eingefügt damit andere Blitzer die Übersetzung haben sollten Sie diese die Option nutzen.
+ - Option hinzugefügt damit der Besitzer des Blitzers die Strafzahlung bekommt abzüglich einer Transaktionsgebühr.
 
 v2.0.0.0
-Dialog zum Einstellen der Werte des Blitzers beim platzieren hinzugefügt
+ - Dialog zum Einstellen der Werte des Blitzers beim Platzieren hinzugefügt
 
 v2.1.0.0
-Möglichkeit hinzugefügt, den Blitzer auf nicht kaufbarem Land zu platzieren
+ - Möglichkeit hinzugefügt, den Blitzer auf nicht kaufbarem Land zu platzieren
+ - Möglichkeit hinzugefügt, den Blitzer nach dem Platzieren neu zu konfigurieren. Hierfür muss man zum Blitzer gehen und dann die Aktivieren-Taste drücken
 ]]></de>
     </description>
 
