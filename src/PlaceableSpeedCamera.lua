@@ -1,6 +1,6 @@
 PlaceableSpeedCamera = {
     prerequisitesPresent = function(specializations)
-        return SpeczializationUtil.hasSpecialization(PlaceableInfoTrigger, specializations)
+        return SpecializationUtil.hasSpecialization(PlaceableInfoTrigger, specializations)
     end,
     TRANSACTION_FEE = 0.9,
     ACTIVATION_TEXT = "action_openDialog"
