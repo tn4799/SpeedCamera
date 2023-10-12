@@ -53,7 +53,7 @@ v2.1.0.0
 ]]></de>
     </description>
 
-	<iconFilename>icon.dds</iconFilename>
+	<iconFilename>icon_SpeedCamera.dds</iconFilename>
 
     <multiplayer supported="true"/>
 
