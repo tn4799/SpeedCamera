@@ -71,7 +71,7 @@ function PlacementDialog:sendCallback(clickOk)
 
     if clickOk then
         local function enterSpeedLimit(this)
-            this:focustextElement()
+            this:focusTextElement()
             this.textElement:setForcePressed(true)
         end
         if speedLimit == nil then
